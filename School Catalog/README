@@ -1,0 +1,40 @@
+Nume:
+        Cazacu Roxana Andreea
+Grupa: 
+	324CC
+Gradul de dificultate al temei : 
+	9 (5 cel mai putin, 10 cel mai mult)
+Timpul alocat :
+	Cam cate 4-5 ore pe zi, excluzand sarbatorile si mai intens in ultimele zile
+Modul de implementare :
+	Am implementat:
+			- Clasa abstracta Utilizator cu datele: user, parola, nume, prenume ; aceste date corespund persoanelor care vor folosi catalogul 
+			
+			- cele 11 clase concrete astfel :
+		-Clasa Elev mosteneste clasa Utilizator,implementeaza interfata IElev si are ca date CNP-ul si data nasterii si metode pentru afisarea acestor date si pentru afisarea numarului de absente, a mediei generale, stergerea unei materii,etc
+		-Clasa Profesor mosteneste clasa Utilizator,implementeaza interfata IProfesor si are ca data materia la care preda, metode pentru adaugare note, modificare si calculare medie, listare studenti, ordonare studenti alfabetic/dupa medie/dupa media generala/dupa numarul absentelor,etc.
+		-Clasa Secretar mosteneste clasa Utilizator,implementeaza interfata ISecretar si are ca date:Id-ul clasei,elevii,materiile, catalogul si metode cu diverse operatii asupra clasei,materiei, elevilor 
+		-Clasa Administrator mosteneste clasa Utilizator,implementeaza interfetele IProfesor si ISecretar si cuprinde metode pentru diverse operatii asupra user-ilor, notelor, claselor, etc
+		-Clasa Clasa are ca date: identificatorul clasei, elevii,materiile,catalogul si metode pentru adaugarea/stergerea unui elev dintr-o clasa,etc
+		-Clasa SituatieMaterieBaza are ca date: materii,2 liste cu notele pe semestre, mediile pe semestre, liste cu absente si metode pentru calcularea mediei unei materii, adaugare nota, adaugare/modificare absenta si cuprinde clasa interna Absenta
+		-Clasa SituatieMaterieCuTeza mosteneste clasa SituatieMaterieBaza la fel ca si clasa anterioara, doar ca este folosita in cazul unei materii cu teza
+		-Clasa Absenta este interna clasei SituatieMaterieCuTeza si reprezinta absenta unui elev si felul ei:motivata, nemotivata, nedeterminat
+		-Clasa Materie are ca date nume, numar de ore pe saptamana si daca are sau nu teza un elev la materia respectiva si metode ce apeleaza aceste date
+		-Clasa Catalog cuprinde un dictionar cu elevii si situatia scolara asociata fiecarei materii si metode de adaugare/stergere elev si adaugare situatie, stergere materie
+		-Clasa Centralizator centralizeaza toate datele, cuprinde listele tuturor utilizatorilor, o lista cu toate clasele,un dictionar cu materiile, profesorul asociat fiecarei materii si clase si diverse metode aplicate acestor date
+			
+			-cele 4 interfete:
+		-Interfata IAdministrator cuprinde metode pentru adaugarea/stergerea/listarea urilizatorilor si operatiile pe care le poate executa un Administrator
+		-Interfata IProfesor cuprinde metode pentru listarea elevilor unei clase,ordonarea elevilor, vizualizarea/editarea situatiei scolare a unui elev, etc si operatiile pe care le poate executa un Profesor
+		-Interfata ISecretar cuprinde metode pentru adaugare/stergere/editare clasa/materiei unui profesor/elevilor/materiilor unei clase si calcularea mediei generale si operatiile pe care le poate executa un Secretar
+		-Interfata IElev  cuprinde metoda pentru afisarea situatiei scolare si operatiilor corespunzatoare unui Elev
+		
+			-metoda toString fiecarei clase
+			
+			Centralizatorul este implementat folosind patern-ul Singleton in felul urmator: constructorul este privat pentru a nu se instantia obiecte de acest tip si are o metoda statica getInstance() ce intoarce singura instanta a clasei
+			Administratratoul creeaza utilizatori folosind patern-ul Factory astfel: are o singura metoda createUser().Administratorul creeaza obiectul in functie de parametri si intoarce un Utilizator
+			Centralizatorul citeste lista de utilizatori dintr-un fisier text ("Utilizatori") si lista materii dintr-un alt fisier ("Materii") cand porneste programul. La terminarea programului va actualiza fisierul "Utilizatori".
+
+			Am mai implementat o clasa utils.java care imi intoarce formatul datei absentei, utilizand SimpleDataFormat
+			
+
